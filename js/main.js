@@ -20,6 +20,14 @@ function createMap(){
     getData();
 };
 
+function PopupContent(properties, attribute){
+    this.properties = properties;
+    this.attribute = attribute;
+    this.year = attribute.split("_")[1];
+    this.Attendance = this.properties[attribute];
+    this.formatted = "<p><b>Location:</b> " + this.properties.Location + "</p><p><b>Attendance in " + this.year + ":</b> " + this.Attendance + " million</p>";
+};
+
 function calculateMinValue(data){
     //create empty array to store all data values
     var allValues = [];
@@ -39,13 +47,23 @@ function calculateMinValue(data){
     return minValue;
 }
 
-function PopupContent(properties, attribute){
-    this.properties = properties;
-    this.attribute = attribute;
-    this.year = attribute.split("_")[1];
-    this.Attendance = this.properties[attribute];
-    this.formatted = "<p><b>Location:</b> " + this.properties.Location + "</p><p><b>Attendance in " + this.year + ":</b> " + this.Attendance + " million</p>";
-};
+// Define a getColor function to assign colors to legend entries based on years
+function getColor(year) {
+    if (year === '2000') {
+      return '#ff7800';
+    } else if (year === '2002') {
+      return '#ff0000';
+    } else if (year === '2004') {
+      return '#00ff00';
+    } else if (year === '2006') {
+      return '#0000ff';
+    } else if (year === '2008') {
+      return '#ffff00';
+    } else {
+      return '#000000'; // Default color
+    }
+  }
+  
 
 //calculate the radius of each proportional symbol
 function calcPropRadius(attValue) {
@@ -82,22 +100,26 @@ function pointToLayer(feature, latlng, attributes){
     //create circle marker layer
     var layer = L.circleMarker(latlng, options);
 
-   //create new popup content 
-   var popupContent = new PopupContent(feature.properties, attribute);
+     //create new popup content
+    var popupContent = new PopupContent(feature.properties, attribute);
+
+    //change the formatting
+    popupContent.formatted = "<h2>" + popupContent.Attendance + " million</h2>";
 
     //create another popup based on the first
     var popupContent2 = Object.create(popupContent);
 
-    //change the formatting
-    popupContent.formatted = "<h2>" + popupContent.Attendance + " million</h2>";
-     //change the formatting of popup 2
-
+    //change the formatting of popup 2
     popupContent2.formatted = "<h2>" + popupContent.Attendance + " million</h2>";
 
-     //add popup to circle marker    
-     layer.bindPopup(popupContent2.formatted)
+    //add popup to circle marker    
+    layer.bindPopup(popupContent2.formatted);
+
+    console.log(popupContent.formatted) //original popup content
 
     //bind the popup to the circle marker
+    //layer.bindPopup(popupContent);
+
     layer.bindPopup(popupContent.formatted, {
         offset: new L.Point(0,-options.radius) 
     });
@@ -116,24 +138,35 @@ function createPropSymbols(data, attributes){
     }).addTo(map);
 };
 
-//Step 1: Create new sequence controls
-function createSequenceControls(attributes) {
-    // Create range input element (slider)
-    var slider = "<input class='range-slider' type='range'></input>";
-    document.querySelector("#panel").insertAdjacentHTML('beforeend', slider);
 
-    // Set slider attributes
-    var sliderElement = document.querySelector(".range-slider");
-    sliderElement.max = attributes.length - 1;
-    sliderElement.min = 0;
-    sliderElement.value = 0;
-    sliderElement.step = 1;
+//Create new sequence controls
+function createSequenceControls(attributes){   
+    var SequenceControl = L.Control.extend({
+        options: {
+            position: 'bottomright'
+        },
 
-    document.querySelector('#panel').insertAdjacentHTML('beforeend', '<button class="step" id="reverse">Reverse</button>');
-    document.querySelector('#panel').insertAdjacentHTML('beforeend', '<button class="step" id="forward">Forward</button');
-    document.querySelector('#reverse').insertAdjacentHTML('beforeend', "<img src='img/reverse.png'>");
-    document.querySelector('#forward').insertAdjacentHTML('beforeend', "<img src='img/forward.png'>");
+        onAdd: function () {
+            // create the control container div with a particular class name
+            var container = L.DomUtil.create('div', 'sequence-control-container');
 
+            //create range input element (slider)
+            container.insertAdjacentHTML('beforeend', '<input class="range-slider" type="range">')
+
+            //add skip buttons
+            container.insertAdjacentHTML('beforeend', '<button class="step" id="reverse" title="Reverse"><img src="img/reverse.png"></button>'); 
+            container.insertAdjacentHTML('beforeend', '<button class="step" id="forward" title="Forward"><img src="img/forward.png"></button>');
+
+            //disable any mouse event listeners for the container
+            L.DomEvent.disableClickPropagation(container);
+
+
+
+
+            return container;
+        }
+    });
+    map.addControl(new SequenceControl());  
     // Step 5: click listener for buttons
     document.querySelectorAll('.step').forEach(function(step){
         step.addEventListener("click", function(){
@@ -159,13 +192,56 @@ function createSequenceControls(attributes) {
     });
 
     // Step 5: input listener for slider
-    sliderElement.addEventListener('input', function(){            
+    document.addEventListener('input', function(){            
         // Step 6: get the new index value
         var index = parseInt(this.value); // Convert to number
         console.log(index);
         // Step 9: pass new attribute to update symbols
         updatePropSymbols(attributes[index]);
     });
+}
+
+function createLegend(attributes){
+    var LegendControl = L.Control.extend({
+        options: {
+            position: 'bottomleft'
+        },
+
+        onAdd: function () {
+            // create the control container with a particular class name
+            var container = L.DomUtil.create('div', 'legend-control-container');
+
+                   
+                // Create the temporal legend
+            var legend = L.control({ position: "bottomleft" });
+            legend.onAdd = function (map) {
+                var div = L.DomUtil.create("div", "info legend");
+              
+                  // Add legend content
+                var years = attributes.map(function (attr) {
+                return attr.split("_")[1];
+                });
+              
+                var labels = [];
+                for (var i = 0; i < years.length; i++) {
+                  labels.push(
+                  '<li><span class="legend-color" style="background:' + getColor(years[i]) + '"></span>' + years[i] + "</li>"
+                    );
+                }
+              
+                  div.innerHTML = "<ul>" + labels.join("") + "</ul>";
+              
+                  return div;
+                };
+              
+                legend.addTo(map);
+                            
+
+                return container;
+        }
+    });
+
+    map.addControl(new LegendControl());
 };
 
 
@@ -177,7 +253,7 @@ function processData(data){
     var properties = data.features[0].properties;
 
     //push each attribute name into attributes array
-    for (var attribute in properties){
+    for (var attribute in properties){  
         //only take attributes with population values
         if (attribute.indexOf("Yr") > -1){
             attributes.push(attribute);
@@ -201,7 +277,7 @@ function updatePropSymbols(attribute){
             var radius = calcPropRadius(props[attribute]);
             layer.setRadius(radius);
 
-            var popupContent = new PopupContent(feature.properties, attribute);
+            var popupContent = new PopupContent(props, attribute);
 
             //update popup content            
             popup = layer.getPopup();            
@@ -212,7 +288,7 @@ function updatePropSymbols(attribute){
 //Step 2: Import GeoJSON data
 function getData(){
     //load the data
-    fetch("data/Summer_Sports.geojson")
+    fetch("data/SummerSports.geojson")
         .then(function(response){
             return response.json();
         })
@@ -224,6 +300,7 @@ function getData(){
             //call function to create proportional symbols
             createPropSymbols(json, attributes);
             createSequenceControls(attributes);
+            createLegend(attributes);
         })
 };
 

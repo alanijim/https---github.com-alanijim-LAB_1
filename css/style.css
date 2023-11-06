@@ -14,6 +14,16 @@
         line-height: 42px;
     }
 
+ .sequence-control-container {  
+        width: 350px;  
+        height: 30px;  
+        background-color: rgba(255,255,255,0.8);  
+        padding: 10px;  
+        line-height: 45px;  
+        text-align: center;  
+        border: solid gray 1px;  
+    }  
+
 .leaflet-popup-content p {
     margin: 0.2em 0;
 }
@@ -27,7 +37,7 @@
 }  
 
 .step img {  
-    width: 100%;  
+    width: 50%; 
 }  
 
 #forward {  
@@ -37,3 +47,22 @@
 #reverse {  
     float: left;  
 }
+
+.info.legend ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .info.legend li {
+    margin-bottom: 6px;
+  }
+  
+  .info.legend .legend-color {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border: 1px solid #000;
+  }
+  

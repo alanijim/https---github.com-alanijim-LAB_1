@@ -1,0 +1,328 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 20,
+        "Yr_2002": 30,
+        "Yr_2004": 26,
+        "Yr_2006": 22,
+        "Yr_2008": 100,
+        "Location": "Queens",
+        "Attendance Sum": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.8283132,
+          40.7135078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 95,
+        "Yr_2002": 120,
+        "Yr_2004": 180,
+        "Yr_2006": 400,
+        "Yr_2008": 10,
+        "Location": "Bronx",
+        "Attendance Sum": 1045
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.8785937,
+          40.8466508
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 180,
+        "Yr_2002": 250,
+        "Yr_2004": 440,
+        "Yr_2006": 550,
+        "Yr_2008": 730,
+        "Location": "Staten Island",
+        "Attendance Sum": 2740
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1496048,
+          40.5834557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 708,
+        "Yr_2002": 58,
+        "Yr_2004": 680,
+        "Yr_2006": 975,
+        "Yr_2008": 333,
+        "Location": "Manhattan",
+        "Attendance Sum": 3974
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9598939,
+          40.7896239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 375,
+        "Yr_2002": 280,
+        "Yr_2004": 200,
+        "Yr_2006": 10,
+        "Yr_2008": 370,
+        "Location": "jersey city",
+        "Attendance Sum": 2325
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.047455,
+          40.7215682
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 210,
+        "Yr_2002": 320,
+        "Yr_2004": 280,
+        "Yr_2006": 200,
+        "Yr_2008": 310,
+        "Location": "Elmont",
+        "Attendance Sum": 1530
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7093041,
+          40.7076444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 225,
+        "Yr_2002": 320,
+        "Yr_2004": 280,
+        "Yr_2006": 200,
+        "Yr_2008": 310,
+        "Location": "union city",
+        "Attendance Sum": 1545
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0215737,
+          37.5872576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 810,
+        "Yr_2004": 560,
+        "Yr_2006": 850,
+        "Yr_2008": 1250,
+        "Location": "Hoboken",
+        "Attendance Sum": 4920
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0323752,
+          40.7433066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 380,
+        "Yr_2002": 10,
+        "Yr_2004": 325,
+        "Yr_2006": 520,
+        "Yr_2008": 950,
+        "Location": "Harison",
+        "Attendance Sum": 3725
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7825615,
+          30.7598881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 775,
+        "Yr_2004": 495,
+        "Yr_2006": 475,
+        "Yr_2008": 75,
+        "Location": "Elizabeth",
+        "Attendance Sum": 2215
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.2107006,
+          40.6639916
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 175,
+        "Yr_2002": 500,
+        "Yr_2004": 520,
+        "Yr_2006": 626,
+        "Yr_2008": 400,
+        "Location": "Union",
+        "Attendance Sum": 2796
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.2504793,
+          37.4616454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 25,
+        "Yr_2004": 20,
+        "Yr_2006": 23,
+        "Yr_2008": 26,
+        "Location": "Orange",
+        "Attendance Sum": 121
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.8704931,
+          33.7500378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 20,
+        "Yr_2004": 22,
+        "Yr_2006": 23,
+        "Yr_2008": 21,
+        "Location": "Hillside",
+        "Attendance Sum": 106
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9028398,
+          41.8778084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 23,
+        "Yr_2004": 26,
+        "Yr_2006": 25,
+        "Yr_2008": 26,
+        "Location": "Edison",
+        "Attendance Sum": 127
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.4113926,
+          40.518157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 20,
+        "Yr_2004": 30,
+        "Yr_2006": 29,
+        "Yr_2008": 26,
+        "Location": "Brooklyn",
+        "Attendance Sum": 110
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9497211,
+          40.6526006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 25,
+        "Yr_2004": 27,
+        "Yr_2006": 28,
+        "Yr_2008": 27,
+        "Location": "Bayonne",
+        "Attendance Sum": 127
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.4736657,
+          43.4945144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Yr_2000": 10,
+        "Yr_2002": 13,
+        "Yr_2004": 20,
+        "Yr_2006": 23,
+        "Yr_2008": 22,
+        "Location": "Middlesex",
+        "Attendance Sum": 90
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.253779139,
+          51.5460558
+        ]
+      }
+    }
+  ]
+}
