@@ -11,10 +11,22 @@ function createMap(){
         zoom: 2
     });
 
-    //adding OSM base tilelayer
+// Adding OSM base tilelayer
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
+
+// Adding Leaflet Geocoder Control
+    var searchPanelControl = L.Control.geocoder({
+        position: 'topright',
+        placeholder: 'Search for a Town...',
+        errorMessage: 'Nothing found.',
+        geocoder: L.Control.Geocoder.nominatim(),
+        defaultMarkGeocode: false
+    });
+
+    searchPanelControl.addTo(map);
+
 
     //call getData function
     getData();
@@ -113,9 +125,6 @@ function pointToLayer(feature, latlng, attributes){
 
     //change the formatting
     popupContent.formatted = "<h2>" + popupContent.Attendance + " per square kilometer</h2>";
-
-    //add popup to circle marker    
-    console.log(popupContent.formatted) //original popup content
 
     //bind the popup to the circle marker
     //layer.bindPopup(popupContent);
